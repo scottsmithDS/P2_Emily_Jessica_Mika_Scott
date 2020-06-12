@@ -29,6 +29,8 @@ var myMap = L.map("map", {
     center: [0, -70],
     zoom: 3
   });
+
+  var Ecuador = "static/data/Ecuador.json";
   
   // Adding a tile layer (the background map image) to our map
 //   // We use the addTo method to add objects to our map
@@ -65,3 +67,49 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   zoomOffset: -1,
   accessToken: API_KEY
 }).addTo(myMap3);
+
+d3.json(Ecuador, function(data) {
+  var longE = []
+  var latE = []
+  var idE = []
+  var userE = []
+  var timeE = []
+  var placeE = []
+  var datar = data.submissions
+    for (var i = 0; i < datar.length; i++) {
+    if(datar[i].id == null) {(console.log("hello"));}
+    else{(idE.push(datar[i].id));}
+    if(datar[i].checkin_longitude == null) {(console.log("hello"));}
+    else{(longE.push(datar[i].checkin_longitude));}
+    if(datar[i].checkin_latitude == null) {(console.log("hello"));}
+    else{(latE.push(datar[i].checkin_latitude));}
+    if(datar[i].checkin_fix_timestap == null) {(console.log("hello"));}
+    else{(timeE.push(datar[i].checkin_fix_timestamp));}
+    if(datar[i].manual_location_name == null) {(console.log("hello"));}
+    else{(placeE.push(datar[i].manual_location_name));}
+    if(datar[i].user_reference == null) {(console.log("hello"));}
+    else{(userE.push(datar[i].user_reference));}
+
+    }
+    var arrayll = []
+    for (var i = 0; i < 74; i++) {
+      if (latE[i] != null && longE[i] != null) {
+        arrayll.push(latE[i])
+        arrayll.push(longE[i]) 
+        console.log(arrayll)
+        L.marker(arrayll, {
+          draggable: true,
+        }).addTo(myMap1);
+        L.marker(arrayll, {
+          draggable: true,
+        }).addTo(myMap2);
+        L.marker(arrayll, {
+          draggable: true,
+        }).addTo(myMap3);
+        L.marker(arrayll, {
+          draggable: true,
+        }).addTo(myMap);  var arrayll = []}
+      else {(console.log("help"));}
+    
+      }
+    })
