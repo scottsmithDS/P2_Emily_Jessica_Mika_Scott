@@ -17,8 +17,8 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    listings = mongo.db.ALL2.find()
-    return render_template("index.html", listings=listings)
+    data = mongo.db.ALL2.find()
+    return render_template("index.html")
     
 
 
