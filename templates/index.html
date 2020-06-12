@@ -7,23 +7,36 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Hot Finds</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css.css">
 </head>
 
 <body>
   <div class="container">
 
+    <h1>Custom Range Slider</h1>
+    <p>Drag the slider to display the current value.</p>
+    
+    <div class="slidecontainer">
+      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+      <p>Value: <span id="demo"></span></p>
+    </div>
 
-    <!-- Craigslist Listings -->
-    <div class="row" id="craiglist-listings">
-      <div class="col-md-12">
+    <!-- <div class="row" id="listings"> -->
+      <!-- <div class="col-md-12"> -->
 
-        {% for dog in listings %}
-          <li style="color:blue">{{ dog }}</li>
-        {% endfor %}
+        <!-- {% for dog in listings %} -->
+          <!-- <li style="color:blue">{{ dog }}</li> -->
+        <!-- {% endfor %} -->
+        
       </div>
     </div>
 
   </div>
+  <!-- don't change just add yours -->
+  <script type="text/javascript" src="logicscotty.js"></script>
+  <script type="text/javascript" src="logicemily.js"></script>
+  <script type="text/javascript" src="logicmika.js"></script>
+  <script type="text/javascript" src="logicjessica.js"></script>
 </body>
 
 </html>
