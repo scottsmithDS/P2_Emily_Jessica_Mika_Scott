@@ -1,4 +1,3 @@
-/// Store our data site inside queryUrl
 function selectData(data,year){
     var results=[];
     for (var i=0; i<data.length; i++){
@@ -22,22 +21,22 @@ function selectData(data,year){
   }
 
     // Define streetmap layers
-    var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+    var streetmap3 = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox/streets-v11",
         accessToken: API_KEY
       });
     // Create our map, giving it the streetmap and earthquakes layers to display on load
-    var myMap = L.map("map", {
+    var myMap3 = L.map("map3", {
         center: [
           37.09, -95.71
         ],
         zoom: 5,
       });
 
-      streetmap.addTo(myMap);
-      d3.json('Untitled.geojson', function(data) {
+      streetmap3.addTo(myMap3);
+      d3.json('static/Data/Untitled.geojson', function(data) {
         // Once we get a response, send the data.features object to the createFeatures function
         console.log(data);
 
@@ -97,13 +96,13 @@ function selectData(data,year){
         onEachFeature:function(feature,layer){
             layer.bindPopup(feature['Country Name'] + ':' + "Population: " + feature.population);
         }
-    }).addTo(myMap);
+    }).addTo(myMap3);
 
     
     /* Reference https://leafletjs.com/examples/choropleth/ */
-    var legend = L.control({position: 'bottomright'});
+    var legend3 = L.control({position: 'bottomright'});
 
-    legend.onAdd = function (map) {
+    legend3.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
         levels = [0, 100000, 100000, 10000000, 20000000, 30000000, 40000000, 50000000, 60000000, 70000000, 80000000, 90000000];
@@ -118,6 +117,8 @@ function selectData(data,year){
     return div;
 };
 
-legend.addTo(myMap);
+legend3.addTo(myMap3);
 
       });
+
+      

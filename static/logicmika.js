@@ -1,6 +1,6 @@
 
 
-function selectData(data,year){
+function selectData1(data,year){
     var results=[];
     for (var i=0; i<data.length; i++){
       if (data[i]['Indicator Name'] == 'CO2 emissions (metric tons per capita)'){
@@ -30,20 +30,51 @@ function selectData(data,year){
           zoom: 3,
         });
   
-        streetmap.addTo(myMap); 
-        var year='2014';
+        streetmap.addTo(myMap);
+
+
+        // var year='1993';
+
+
+        
       d3.json(jsonData, function(data) {
-          console.log(data);
-          console.log(selectData(data,year));
+        var year = "1993"
 //   change layer but nothing above except for indicator name and if need change the 5 or 6 lines above. For css don't implement here ad directly to html of your map
-          var heat = L.heatLayer(selectData(data,year), {radius: 50, minOpacity:1, blur: 60 }).addTo(myMap);
+           var heat = L.heatLayer(selectData1(data,year), {radius: 50, minOpacity:1, blur: 60 })
+          heat.addTo(myMap);
   
   
   
-        });
+        
+
+       
+      });
+      var slider = document.getElementById("myRange");
+      slider.oninput = function() {
+          
+        myMap.eachLayer(function(layer){
+          myMap.removeLayer(layer);
+      });
+      year2 = slider.value
+      streetmap.addTo(myMap)
+      d3.json(jsonData, function(data) {
+
+        //   change layer but nothing above except for indicator name and if need change the 5 or 6 lines above. For css don't implement here ad directly to html of your map
+
+                  var heat2 = L.heatLayer(selectData1(data,year2), {radius: 50, minOpacity:1, blur: 60 })
+                  heat2.addTo(myMap);
+          
+          
+          
+                });
+              
+    }
   
   
   
+ 
   
-  
-  
+
+
+            
+        
