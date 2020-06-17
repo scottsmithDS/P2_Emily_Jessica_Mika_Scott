@@ -11,3 +11,4 @@ index.html - where Emily initializes d3 graph. script section.
 
 App.py (Flask is connected) and where we load in data and poast to html. Did not read in out of time sake, but works. 
 
+It appears that population data is representing itself in multiple graphs instead of the correct data. So on the d3 circles one it is incorrect, and then for cloropleth it is not showing accurate as well. We understand that this will hurt our project's validity. 
